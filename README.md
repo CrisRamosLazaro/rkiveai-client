@@ -1,50 +1,65 @@
-# React + TypeScript + Vite
+<h1>
+  Reddit Room
+</h1>
+<hr/>
+Reddit Room is a *work-in-progress* full-stack MERN application contained in 2 repositories:
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- [rkiveai-client](https://github.com/crisramoslazaro/rkiveai-client): front-end
+- [rkiveai-server](https://github.com/crisramoslazaro/rkiveai-server): back-end
 
-Currently, two official plugins are available:
+### what is it for?
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Analyzing the sentiment of Reddit posts. It allows users or moderators to select a subreddit and sorting option, and display the top 10 posts of this subreddit (according to the sorting option) them in a table, where they can see the posts title, number of upvotes, number of comments, date of creation, and an AI analysis of the post's sentiment: POSITIVE, NEGATIVE or NEUTRAL.
 
-## Expanding the ESLint configuration
+## Installation and Setup
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Clone the repository:
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```bash
+git clone https://github.com/crisramoslazaro/rkiveai-client.git
+cd rkiveai-client
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+Install dependencies:
+```bash
+npm install
 ```
+
+Create a .env file based on the .env.example and configure the necessary environment variables.
+
+Run the development server:
+```bash
+npm run dev
+```
+
+## Environment Configuration
+The application requires several environment variables to be set.
+The .env.example file provides a template for these variables:
+
+**rkiveai-client**
+```bash
+VITE_API_URL=http://localhost:5005/api
+```
+
+**rkiveai-server**
+```bash
+PORT=5005
+ORIGIN=http://localhost:5173
+OPENAI_API_KEY=your_key
+
+```
+
+<hr/>
+
+## Assumptions and Limitations
+- API Availability: The application assumes that the backend API is available and running at the specified URL.
+- OpenAI API Quota: The sentiment analysis feature relies on the OpenAI API, which has usage limits. Exceeding the quota will result in errors.
+
+## Suggestions for Future Improvements
+
+- Enhanced Error Handling: Improve error handling to provide more detailed feedback to the user.
+- Pagination: Add pagination to handle large sets of posts more efficiently.
+- Caching: Implement caching to reduce the number of API calls and improve performance.
+- User Authentication: Add user authentication to allow personalized settings and preferences.
+- UI Enhancements: Improve the UI/UX with better styling and responsive design.
+- Testing: Add unit and integration tests to improve code reliability and maintainability.
