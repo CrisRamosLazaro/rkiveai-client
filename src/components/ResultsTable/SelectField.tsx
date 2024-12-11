@@ -7,13 +7,21 @@ interface SelectProps {
 
 const SelectField: React.FC<SelectProps> = ({ value, onChange }) => {
     return (
-        <select value={value} onChange={onChange}>
-            {postSortingOptions.map(option => (
-                <option key={option.value} value={option.value}>
-                    {option.label}
-                </option>
-            ))}
-        </select>
+        <div className="flex items-center space-x-2">
+            <label htmlFor="sort-by" className="text-gray-700 font-medium">Sort by:</label>
+            <select
+                id="sort-by"
+                value={value}
+                onChange={onChange}
+                className="px-4 py-2 border border-gray-300 rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+                {postSortingOptions.map(option => (
+                    <option key={option.value} value={option.value}>
+                        {option.label}
+                    </option>
+                ))}
+            </select>
+        </div>
     )
 }
 

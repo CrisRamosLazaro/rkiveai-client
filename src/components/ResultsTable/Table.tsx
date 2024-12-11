@@ -4,24 +4,24 @@ interface TableProps {
 
 const Table: React.FC<TableProps> = ({ posts }) => {
     return (
-        <table>
+        <table className="min-w-full bg-white border border-gray-200">
             <thead>
-                <tr>
-                    <th>Title</th>
-                    <th>Upvotes</th>
-                    <th>Comments</th>
-                    <th>Date</th>
-                    <th>Sentiment</th>
+                <tr className="bg-gray-100">
+                    <th className="py-2 px-4 border-b border-gray-200 text-left w-1/2">Title</th>
+                    <th className="py-2 px-4 border-b border-gray-200 text-center">Upvotes</th>
+                    <th className="py-2 px-4 border-b border-gray-200 text-center">Comments</th>
+                    <th className="py-2 px-4 border-b border-gray-200 text-center">Date</th>
+                    <th className="py-2 px-4 border-b border-gray-200 text-center">Sentiment</th>
                 </tr>
             </thead>
             <tbody>
                 {posts.map((post, index) => (
-                    <tr key={index}>
-                        <td>{post.title}</td>
-                        <td>{post.upvotes}</td>
-                        <td>{post.comments}</td>
-                        <td>{new Date(post.date).toLocaleDateString()}</td>
-                        <td>{post.sentiment}</td>
+                    <tr key={index} className="hover:bg-gray-50">
+                        <td className="py-2 px-4 border-b border-gray-200 text-left text-sm">{post.title}</td>
+                        <td className="py-2 px-4 border-b border-gray-200 text-center text-sm">{post.upvotes}</td>
+                        <td className="py-2 px-4 border-b border-gray-200 text-center text-sm">{post.comments}</td>
+                        <td className="py-2 px-4 border-b border-gray-200 text-center text-sm">{new Date(post.date).toLocaleDateString()}</td>
+                        <td className="py-2 px-4 border-b border-gray-200 text-center text-sm">{post.sentiment}</td>
                     </tr>
                 ))}
             </tbody>
